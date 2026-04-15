@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Izloze</title>
+  <style>
+    :root {
+      --bg1: #020617;
+      --bg2: #0f172a;
+      --bg3: #1e293b;
+      --accent: #38bdf8;
+      --accent2: #a78bfa;
+      --accent3: #22d3ee;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --gold: #facc15;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(56,189,248,0.16), transparent 25%),
+        radial-gradient(circle at 80% 30%, rgba(167,139,250,0.16), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(34,211,238,0.10), transparent 30%),
+        linear-gradient(135deg, var(--bg1), var(--bg2) 45%, var(--bg3));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .bg-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.35;
+      animation: floatOrb 8s ease-in-out infinite;
+    }
+
+    .orb1 {
+      width: 260px;
+      height: 260px;
+      background: var(--accent);
+      top: 8%;
+      left: 8%;
+    }
+
+    .orb2 {
+      width: 320px;
+      height: 320px;
+      background: var(--accent2);
+      bottom: 6%;
+      right: 8%;
+      animation-delay: -3s;
+    }
+
+    .orb3 {
+      width: 220px;
+      height: 220px;
+      background: var(--accent3);
+      top: 40%;
+      right: 22%;
+      animation-delay: -1.5s;
+    }
+
+    .wrap {
+      text-align: center;
+      padding: 28px;
+      width: 100%;
+      max-width: 1800px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: clamp(42px, 5vw, 72px);
+      margin: 0 0 10px;
+      letter-spacing: -0.04em;
+      text-shadow: 0 8px 30px rgba(0,0,0,0.35);
+      animation: titlePulse 3s ease-in-out infinite;
+    }
+
+    .subtitle {
+      margin: 0 0 28px;
+      font-size: 20px;
+      color: var(--muted);
+      opacity: 0.92;
+    }
+
+    .btn {
+      padding: 18px 34px;
+      font-size: 22px;
+      border: none;
+      border-radius: 18px;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      font-weight: 800;
+      margin-bottom: 42px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+      box-shadow: 0 14px 35px rgba(56,189,248,0.28);
+    }
+
+    .btn:hover {
+      transform: scale(1.08);
+      filter: brightness(1.06);
+      box-shadow: 0 18px 45px rgba(167,139,250,0.32);
+    }
+
+    .btn:active { transform: scale(1.02); }
+
+    .stage {
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      perspective: 1200px;
+    }
+
+    .result {
+      font-size: clamp(54px, 6vw, 138px);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1.1;
+      min-height: 220px;
+      width: min(96vw, 1700px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px 40px;
+      text-shadow:
+        0 0 12px rgba(255,255,255,0.10),
+        0 12px 36px rgba(0,0,0,0.35);
+      transform-origin: center;
+      transition: transform 0.18s ease, filter 0.18s ease, opacity 0.18s ease;
+      white-space: nowrap;
+      overflow: visible;
+      max-width: 100%;
+    }
+
+    .spinning {
+      color: white;
+      animation:
+        wobble 0.28s ease-in-out infinite,
+        flicker 0.38s linear infinite,
+        zoomPulse 0.5s ease-in-out infinite;
+      filter: drop-shadow(0 0 18px rgba(56,189,248,0.45));
+    }
+
+    .finish {
+      animation: winnerPop 0.9s cubic-bezier(.2,.8,.2,1), winnerGlow 1.6s ease-in-out 2;
+      color: var(--gold);
+      filter: drop-shadow(0 0 20px rgba(250,204,21,0.45));
+    }
+
+    .counter {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 18px;
+      min-height: 28px;
+      letter-spacing: 0.04em;
+    }
+
+    @keyframes wobble {
+      0%   { transform: rotate(-7deg) translateX(-16px) scale(0.96); }
+      25%  { transform: rotate(5deg) translateX(12px) scale(1.03); }
+      50%  { transform: rotate(-4deg) translateX(-10px) scale(0.98); }
+      75%  { transform: rotate(6deg) translateX(14px) scale(1.04); }
+      100% { transform: rotate(-7deg) translateX(-16px) scale(0.96); }
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
+    @keyframes zoomPulse {
+      0%, 100% { letter-spacing: -0.05em; }
+      50% { letter-spacing: -0.01em; }
+    }
+
+    @keyframes winnerPop {
+      0% { transform: scale(0.7) rotate(-8deg); opacity: 0; }
+      55% { transform: scale(1.14) rotate(4deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    @keyframes winnerGlow {
+      0%, 100% { text-shadow: 0 0 14px rgba(250,204,21,0.25), 0 10px 35px rgba(0,0,0,0.34); }
+      50% { text-shadow: 0 0 34px rgba(250,204,21,0.75), 0 0 60px rgba(250,204,21,0.4), 0 12px 40px rgba(0,0,0,0.34); }
+    }
+
+    @keyframes floatOrb {
+      0%, 100% { transform: translateY(0) translateX(0) scale(1); }
+      50% { transform: translateY(-18px) translateX(12px) scale(1.08); }
+    }
+
+    @keyframes titlePulse {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+
+    @media (max-width: 768px) {
+      .btn {
+        font-size: 18px;
+        padding: 15px 24px;
+      }
+
+      .stage { min-height: 260px; }
+
+      .result {
+        min-height: 140px;
+        padding: 12px;
+        font-size: clamp(28px, 7vw, 56px);
+      }
+
+      .subtitle,
+      .counter { font-size: 16px; }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <div class="bg-glow">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+
+  <div class="wrap">
+    <img src="baltais.png" alt="Logo" style="display:block;margin:0 auto 20px;height:600px;object-fit:contain;">
+
+
+    <button id="drawBtn" class="btn">IZLOZE</button>
+
+    <div class="stage">
+      <div id="result" class="result">?</div>
+    </div>
+
+    <div id="counter" class="counter"></div>
+  </div>
+
+  <script>
+    const names = [
+"Adele Sakoviča",
+"Agate Buravcova",
+"Agnese Medne",
+"AIJA GALNIECE",
+"Aija Smilga",
+"Ainārs Zenka",
+"Aiva Banga",
+"Alens Pčelins",
+"Alise Kuzņecova",
+"Alise Lukina",
+"Andris Daubergs",
+"Anete Strūberga",
+"Anne Grēta Stalidzāne",
+"Artūrs Smiltnieks",
+"Artūrs Šulbergs",
+"Artūrs Veismanis",
+"Astra Ondzule",
+"Āboliņa Anda",
+"Āris Patmalnieks",
+"Baiba Čerņevska",
+"Daina Taupmane",
+"Daniels Bambals",
+"Dārta Albiņa-Alba",
+"Dāvis Briedis",
+"Dzintra Adītāja",
+"Edgars Bole",
+"Edgars Dzirkalis",
+"Edijs Bunduls",
+"Edvards Sviķis",
+"Elita Voiciša",
+"Elīna Logina",
+"Emija Nikola Karele",
+"Emīls Grietēns",
+"Emīls Lejnieks",
+"Endijs Markuss Zorgevics",
+"Ernests Roberts Vēriņš",
+"Estere Papša",
+"Evita Kraukle",
+"Guntis Ruskis",
+"Gustavs Linde",
+"Gustavs Namnieks",
+"Ģirts Paupers",
+"Helēna Vidžupe",
+"Ieva Stapāne",
+"Inga Orlova",
+"Ingus Urtāns",
+"Inita Čapese",
+"Jana Pietkeviča",
+"Jānis Daubergs",
+"Jānis Saliņš",
+"Jānis Tilibs",
+"Jānis Vēriņš",
+"Jolanta Armuševica",
+"Jurģis Namejs Zvejnieks",
+"Karīna Krauze",
+"Karlis Levensteins",
+"Katrīna Baltaisbrence",
+"Kārlis Roberts Krūmiņš",
+"Krista Dzebale",
+"Krista Kirķe",
+"Kristaps Kārlis Naglis",
+"Kristaps Zvejnieks",
+"Kristers Jaunzems",
+"Kristers Linde",
+"Kristiāna Dauberga",
+"Kristiāna Veipa",
+"Kristīne Homatova",
+"Kristīne Krūmiņa",
+"Lidere",
+"Līva Leida Liberte",
+"Līva Lielkāja",
+"Loreta Pavloviča",
+"Lote Annija Ankalniņa",
+"Marta Svētiņa",
+"Maruta Butāne",
+"Maruta Līcīte",
+"Matiss Siciliano",
+"Māra Kājiņa",
+"Miks Vēveris",
+"Miķelis Vilcēns",
+"Mišela Dūka",
+"Nauris Auzenbahs",
+"Nikola Krista Ivanova",
+"Normunds Voicišs",
+"Patrīcija Anna Krafte",
+"Patrīcija Lidere",
+"Paula Marija Romanovska",
+"Pēteris Kalniņš",
+"Pēteris Tārs",
+"Pēteris Tervits",
+"RENĀTA ANŽA",
+"Rets Rupmejs",
+"Rihards Bārda",
+"Roberts Dūks",
+"Roberts Knope",
+"Sigita Svarca",
+"Sintija Jurdža",
+"Sintija Pāruma",
+"Tanita Rībena",
+"Toms Baltiņš",
+"Uldis Dirvēns",
+"Valda Priede",
+"Voldemārs Grahoļskis",
+"Iveta Račko",
+"Alnars Pirvics",
+"Ruta Gabranova",
+"Romēna Šulca",
+"Rolands Lācis",
+"Kristaps Magone",
+"Toms Romanovskis",
+"Luīze Lūcija Grava",
+"Rinalds Sedliņš",
+"Roberts Kristofers Napituhins",
+"Grēta Nora Kasparāne",
+"Māra Makstniece ",
+"Tīna Dansone",
+"Laura Džigune",
+"Līga Ulmane",
+"Andriana Laura Vitte",
+"Katrīne Kazaka",
+"Sandis Maskaļonoks",
+"Eduards Krustiņš",
+"Mārtiņš Toms Puķītis",
+"Evelīna Agnese Vietere",
+"Keita Elizabete Pētersone",
+"Rendijs Gulbis",
+"Anete Apsīte",
+"Baiba Vertele",
+"Sabīne Baltaisbrence",
+"Laine Jansone",
+"Ilona Buka",
+"Dāvis Raivo Zvejnieks",
+"Rita Savicka",
+"Dagnija Puniņa",
+"Niks Mežiņš",
+"Ilze Romane",
+"Edgars Krūmiņš",
+"Austra Štrāla",
+"Aelita Pāvule",
+"Anna Apšiniece",
+"Ingrīda Garbolinska",
+"Aiva Volfa",
+"Agnese Žagata",
+"Pēteris Zvaigzne",
+"Dāvids Purmalis",
+"Elīna Lerķe",
+"Andris Velme",
+"Ilze Rudzīte",
+"Nikola Aniņa",
+"Laura Eimane",
+"Rūta Dūduma",
+"Sarmite Valaine",
+"Paula Niedinga",
+"Kurts Gailis",
+"Anna Raita",
+"Kristens Zvirgzdiņš",
+"Marta Būmane"
+];
+
+    const result = document.getElementById('result');
+    const counter = document.getElementById('counter');
+    const drawBtn = document.getElementById('drawBtn');
+
+    let spinInterval = null;
+    let countdownInterval = null;
+    let finishTimeout = null;
+    let isRunning = false;
+
+    function launchConfetti() {
+      const duration = 4000;
+      const end = Date.now() + duration;
+
+      (function frame() {
+        confetti({
+          particleCount: 18,
+          angle: 60,
+          spread: 120,
+          startVelocity: 55,
+          gravity: 0.95,
+          scalar: 1.1,
+          origin: { x: 0, y: Math.random() * 0.7 }
+        });
+
+        confetti({
+          particleCount: 18,
+          angle: 120,
+          spread: 120,
+          startVelocity: 55,
+          gravity: 0.95,
+          scalar: 1.1,
+          origin: { x: 1, y: Math.random() * 0.7 }
+        });
+
+        confetti({
+          particleCount: 12,
+          spread: 160,
+          startVelocity: 40,
+          gravity: 0.9,
+          scalar: 1,
+          origin: { x: Math.random(), y: Math.random() * 0.35 }
+        });
+
+        if (Date.now() < end) requestAnimationFrame(frame);
+      })();
+    }
+
+    function pickRandomName() {
+      return names[Math.floor(Math.random() * names.length)];
+    }
+
+    function draw() {
+      if (isRunning) return;
+      isRunning = true;
+      drawBtn.disabled = true;
+      drawBtn.style.opacity = '0.7';
+      drawBtn.style.cursor = 'not-allowed';
+
+      clearInterval(spinInterval);
+      clearInterval(countdownInterval);
+      clearTimeout(finishTimeout);
+
+      result.classList.remove('finish');
+      void result.offsetWidth;
+      result.classList.add('spinning');
+
+      let remaining = 5;
+      counter.textContent = ``;
+      result.textContent = pickRandomName();
+
+      spinInterval = setInterval(() => {
+        result.textContent = pickRandomName();
+      }, 70);
+
+      countdownInterval = setInterval(() => {
+        remaining -= 1;
+        if (remaining > 0) {
+          counter.textContent = ``;
+        }
+      }, 1000);
+
+      finishTimeout = setTimeout(() => {
+        clearInterval(spinInterval);
+        clearInterval(countdownInterval);
+
+        result.textContent = pickRandomName();
+        result.classList.remove('spinning');
+        result.classList.add('finish');
+        counter.textContent = '';
+        launchConfetti();
+
+        isRunning = false;
+        drawBtn.disabled = false;
+        drawBtn.style.opacity = '1';
+        drawBtn.style.cursor = 'pointer';
+      }, 5000);
+    }
+
+    drawBtn.addEventListener('click', draw);
+  </script>
+</body>
+</html>
