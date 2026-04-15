@@ -6,6 +6,7 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/black.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
 
   <style>
     html, body {
@@ -14,7 +15,7 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
-      background: #000;
+      background: #f5a623;
     }
 
     .reveal, .slides, section {
@@ -25,22 +26,81 @@
     section {
       margin: 0 !important;
       padding: 0 !important;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      background: linear-gradient(135deg, #f5a623 0%, #f8c471 50%, #f5a623 100%) !important;
+      position: relative;
+      overflow: hidden;
     }
 
-    /* bilde kā elements */
-    .slide-img {
+
+
+    .slide-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 60px 80px;
+      font-family: 'Nunito', Arial, sans-serif;
+      color: #1a3a6b;
+    }
+
+    .slide-content h1 {
+      font-size: 96px;
+      font-weight: 900;
+      line-height: 1.1;
+      margin: 0;
+      letter-spacing: 0.02em;
+      color: #1a3a6b;
+      text-transform: none;
+    }
+
+    .slide-content h2 {
+      font-size: 72px;
+      font-weight: 900;
+      line-height: 1.15;
+      margin: 0;
+      color: #1a3a6b;
+      text-transform: none;
+    }
+
+    .slide-content p {
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin: 20px 0 0;
+      color: #1a3a6b;
+    }
+
+    .slide-content .small {
+      font-size: 38px;
+      font-weight: 700;
+      color: rgba(26,58,107,0.7);
+    }
+
+    .lines-bg {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* svarīgi */
+      object-fit: cover;
+      pointer-events: none;
+      z-index: 0;
     }
 
     iframe {
       width: 100%;
       height: 100%;
       border: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* reveal.js pārrakstīšana */
+    .reveal h1, .reveal h2, .reveal h3, .reveal p {
+      font-family: 'Nunito', Arial, sans-serif;
+      color: #1a3a6b;
+      text-shadow: none;
     }
   </style>
 </head>
@@ -51,88 +111,203 @@
   <div class="slides">
 
     <!-- 1 -->
-    <section><img src="slide1.png" class="slide-img"></section>
-
-    <!-- 2 EMBED -->
     <section>
-      <iframe src="https://sjegres.github.io/mvg115/"></iframe>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
+
+    <!-- 2 IZLOZE -->
+    <section>
+      <iframe src="izloze.html"></iframe>
     </section>
 
     <!-- 3 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 4 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 5 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 6 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 7 -->
-    <section><img src="slide1.png" class="slide-img"></section>
-
-    <!-- 8 EMBED -->
     <section>
-      <iframe src="https://sjegres.github.io/mvg115/"></iframe>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
+
+    <!-- 8 IZLOZE -->
+    <section>
+      <iframe src="izloze.html"></iframe>
     </section>
 
     <!-- 9 -->
-    <section><img src="slide1.png" class="slide-img"></section>
-
-    <!-- 10 EMBED -->
     <section>
-      <iframe src="https://sjegres.github.io/mvg115/"></iframe>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
+
+    <!-- 10 IZLOZE -->
+    <section>
+      <iframe src="izloze.html"></iframe>
     </section>
 
     <!-- 11 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 12 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 13 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 14 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 15 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 16 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 17 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 18 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 19 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 20 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 21 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 22 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 23 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 24 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 25 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
     <!-- 26 -->
-    <section><img src="slide1.png" class="slide-img"></section>
+    <section>
+      <img class="lines-bg" src="lines.png" alt="" />      <div class="slide-content">
+        <h1>Teksts šeit</h1>
+      </div>
+    
+    </section>
 
   </div>
 </div>
