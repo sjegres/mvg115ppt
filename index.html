@@ -2,375 +2,155 @@
 <html lang="lv">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prezentācija</title>
+  <title>Presentation</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/black.css">
 
   <style>
     html, body {
-      width: 100%;
-      height: 100%;
       margin: 0;
       padding: 0;
-      overflow: hidden;
-      background: #000;
-      font-family: Arial, sans-serif;
-    }
-
-    .reveal {
       width: 100vw;
       height: 100vh;
+      overflow: hidden;
+      background: #000;
     }
 
-    .reveal .slides,
-    .reveal .slides section {
+    .reveal, .slides, section {
       width: 100%;
       height: 100%;
     }
 
-    .reveal .slides section {
-      box-sizing: border-box;
-      padding: 80px 100px;
-    }
-
-    .slide-center {
-      display: flex !important;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .title {
-      font-size: 72px;
-      font-weight: 700;
-      margin-bottom: 24px;
-    }
-
-    .subtitle {
-      font-size: 32px;
-      opacity: 0.85;
-    }
-
-    .content {
-      font-size: 42px;
-      line-height: 1.35;
-      max-width: 1600px;
-    }
-
-    .two-col {
-      display: grid !important;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      height: 100%;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.06);
-      border-radius: 24px;
-      padding: 36px;
-    }
-
-    .small {
-      font-size: 28px;
-      opacity: 0.8;
-    }
-
-    ul.clean {
-      list-style: none;
-      padding: 0;
-      margin: 30px 0 0 0;
-    }
-
-    ul.clean li {
-      font-size: 38px;
-      margin: 18px 0;
-    }
-
-    .number {
-      font-size: 24px;
-      opacity: 0.55;
-      position: absolute;
-      right: 40px;
-      bottom: 24px;
-    }
-
-    .embed-wrap {
-      width: 100%;
-      height: 100%;
-      display: flex !important;
-      align-items: center;
-      justify-content: center;
+    section {
+      margin: 0 !important;
       padding: 0 !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .embed-wrap iframe {
+    /* bilde kā elements */
+    .slide-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* svarīgi */
+    }
+
+    iframe {
       width: 100%;
       height: 100%;
       border: none;
-      display: block;
-    }
-
-    h1, h2, h3, p {
-      margin-top: 0;
     }
   </style>
 </head>
+
 <body>
-  <div class="reveal">
-    <div class="slides">
 
-      <section class="slide-center">
-        <div class="title">Prezentācijas nosaukums</div>
-        <div class="subtitle">Ievads un galvenā ideja</div>
-        <div class="number">1 / 26</div>
-      </section>
+<div class="reveal">
+  <div class="slides">
 
-      <section>
-        <h2>Saturs</h2>
-        <ul class="clean">
-          <li>1. Ievads</li>
-          <li>2. Konteksts</li>
-          <li>3. Risinājums</li>
-          <li>4. Demonstrācija</li>
-          <li>5. Secinājumi</li>
-        </ul>
-        <div class="number">2 / 26</div>
-      </section>
+    <!-- 1 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section class="slide-center">
-        <div class="title">Kāpēc šī tēma ir svarīga?</div>
-        <div class="content">Īss ievads par problēmu, vajadzību vai iespēju.</div>
-        <div class="number">3 / 26</div>
-      </section>
+    <!-- 2 EMBED -->
+    <section>
+      <iframe src="https://sjegres.github.io/mvg115ppt/"></iframe>
+    </section>
 
-      <section>
-        <h2>Situācija šodien</h2>
-        <div class="content">
-          Apraksti pašreizējo stāvokli, tirgu, lietotājus vai tehnisko kontekstu.
-        </div>
-        <div class="number">4 / 26</div>
-      </section>
+    <!-- 3 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section class="two-col">
-        <div>
-          <h2>Galvenā problēma</h2>
-          <div class="content small">
-            Apraksti, kas šobrīd nestrādā vai kur ir lielākais izaicinājums.
-          </div>
-        </div>
-        <div class="card">
-          <div class="content">Šeit vari ielikt svarīgu citātu, skaitli vai īsu uzsvaru.</div>
-        </div>
-        <div class="number">5 / 26</div>
-      </section>
+    <!-- 4 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section>
-        <h2>Mērķis</h2>
-        <div class="content">
-          Ko tieši tu vēlies panākt ar šo projektu, produktu vai ideju?
-        </div>
-        <div class="number">6 / 26</div>
-      </section>
+    <!-- 5 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section>
-        <h2>Pieeja</h2>
-        <ul class="clean">
-          <li>Izpēte</li>
-          <li>Prototipēšana</li>
-          <li>Testēšana</li>
-          <li>Iterācija</li>
-        </ul>
-        <div class="number">7 / 26</div>
-      </section>
+    <!-- 6 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section class="two-col">
-        <div class="card">
-          <h3>Variants A</h3>
-          <div class="small">Apraksts par pirmo pieeju.</div>
-        </div>
-        <div class="card">
-          <h3>Variants B</h3>
-          <div class="small">Apraksts par otro pieeju.</div>
-        </div>
-        <div class="number">8 / 26</div>
-      </section>
+    <!-- 7 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section class="slide-center">
-        <div class="title">Kāpēc izvēlējāmies šo risinājumu</div>
-        <div class="subtitle">Īss, pārliecinošs pamatojums</div>
-        <div class="number">9 / 26</div>
-      </section>
+    <!-- 8 EMBED -->
+    <section>
+      <iframe src="https://sjegres.github.io/mvg115ppt/"></iframe>
+    </section>
 
-      <section>
-        <h2>Tehniskais risinājums</h2>
-        <div class="content">
-          Apraksti arhitektūru, plūsmu vai galvenās komponentes.
-        </div>
-        <div class="number">10 / 26</div>
-      </section>
+    <!-- 9 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section>
-        <h2>Arhitektūra</h2>
-        <ul class="clean">
-          <li>Frontend</li>
-          <li>Backend</li>
-          <li>API / integrācijas</li>
-          <li>Datu slānis</li>
-        </ul>
-        <div class="number">11 / 26</div>
-      </section>
+    <!-- 10 EMBED -->
+    <section>
+      <iframe src="https://sjegres.github.io/mvg115ppt/"></iframe>
+    </section>
 
-      <section class="slide-center">
-        <div class="title">Dizaina principi</div>
-        <div class="subtitle">Vienkāršība, ātrums, skaidrība</div>
-        <div class="number">12 / 26</div>
-      </section>
+    <!-- 11 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section>
-        <h2>Lietotāja pieredze</h2>
-        <div class="content">
-          Kā lietotājs pārvietojas pa produktu vai saturu.
-        </div>
-        <div class="number">13 / 26</div>
-      </section>
+    <!-- 12 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section class="two-col">
-        <div>
-          <h2>Plusi</h2>
-          <ul class="clean">
-            <li>Ātri lietojams</li>
-            <li>Vienkāršs interfeiss</li>
-            <li>Pārskatāma struktūra</li>
-          </ul>
-        </div>
-        <div>
-          <h2>Ierobežojumi</h2>
-          <ul class="clean">
-            <li>Atkarīgs no interneta</li>
-            <li>Daži edge-case scenāriji</li>
-            <li>Nepieciešama uzturēšana</li>
-          </ul>
-        </div>
-        <div class="number">14 / 26</div>
-      </section>
+    <!-- 13 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section>
-        <h2>Rezultāti</h2>
-        <div class="content">
-          Šeit ieliec metriku, testu rezultātus vai pirmos novērojumus.
-        </div>
-        <div class="number">15 / 26</div>
-      </section>
+    <!-- 14 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section class="slide-center">
-        <div class="title">Galvenais ieguvums</div>
-        <div class="content">Viens skaidrs teikums, ko auditorijai atcerēties.</div>
-        <div class="number">16 / 26</div>
-      </section>
+    <!-- 15 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section>
-        <h2>Demo ievads</h2>
-        <div class="content">
-          Nākamajā slaidā vari ielikt savu dzīvo HTML lapu vai prototipu.
-        </div>
-        <div class="number">17 / 26</div>
-      </section>
+    <!-- 16 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section class="embed-wrap">
-        <iframe src="TAVA_LAPA_URL" title="Demo"></iframe>
-        <div class="number">18 / 26</div>
-      </section>
+    <!-- 17 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section>
-        <h2>Ko redzējām demo laikā</h2>
-        <ul class="clean">
-          <li>Galvenā funkcija</li>
-          <li>Lietotāja plūsma</li>
-          <li>Interaktivitāte</li>
-        </ul>
-        <div class="number">19 / 26</div>
-      </section>
+    <!-- 18 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section class="two-col">
-        <div class="card">
-          <h3>Nākamais solis 1</h3>
-          <div class="small">Kas jādara tuvākajā laikā.</div>
-        </div>
-        <div class="card">
-          <h3>Nākamais solis 2</h3>
-          <div class="small">Kas jādara pēc tam.</div>
-        </div>
-        <div class="number">20 / 26</div>
-      </section>
+    <!-- 19 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section>
-        <h2>Roadmap</h2>
-        <ul class="clean">
-          <li>Q1 — pamata versija</li>
-          <li>Q2 — uzlabojumi</li>
-          <li>Q3 — mērogošana</li>
-          <li>Q4 — optimizācija</li>
-        </ul>
-        <div class="number">21 / 26</div>
-      </section>
+    <!-- 20 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section>
-        <h2>Resursi</h2>
-        <div class="content">
-          Komanda, tehnoloģijas, laiks, budžets vai citas vajadzības.
-        </div>
-        <div class="number">22 / 26</div>
-      </section>
+    <!-- 21 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section class="slide-center">
-        <div class="title">Riski</div>
-        <div class="subtitle">Kas var noiet greizi un kā to mazināt</div>
-        <div class="number">23 / 26</div>
-      </section>
+    <!-- 22 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section>
-        <h2>Kopsavilkums</h2>
-        <ul class="clean">
-          <li>Problēma ir skaidra</li>
-          <li>Risinājums ir definēts</li>
-          <li>Demo parāda potenciālu</li>
-        </ul>
-        <div class="number">24 / 26</div>
-      </section>
+    <!-- 23 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section class="slide-center">
-        <div class="title">Jautājumi?</div>
-        <div class="subtitle">Paldies par uzmanību</div>
-        <div class="number">25 / 26</div>
-      </section>
+    <!-- 24 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-      <section class="slide-center">
-        <div class="title">Kontakti</div>
-        <div class="subtitle">vards@epasts.lv</div>
-        <div class="number">26 / 26</div>
-      </section>
+    <!-- 25 -->
+    <section><img src="slide1.png" class="slide-img"></section>
 
-    </div>
+    <!-- 26 -->
+    <section><img src="slide1.png" class="slide-img"></section>
+
   </div>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
-  <script>
-    Reveal.initialize({
-      width: 2048,
-      height: 1080,
-      margin: 0,
-      minScale: 1,
-      maxScale: 1,
-      controls: true,
-      progress: false,
-      center: false,
-      hash: true,
-      transition: 'slide'
-    });
-  </script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+  Reveal.initialize({
+    width: 2048,
+    height: 1080,
+    margin: 0,
+    minScale: 1,
+    maxScale: 1,
+    controls: true,
+    progress: false,
+    center: false
+  });
+</script>
+
 </body>
 </html>
